@@ -1,0 +1,321 @@
+/* Icons from directory "" */
+.IconCoin10,
+.IconCoin10\:regular {
+  background-image: url('/src/assets/img/icons/fill/insert-coin.svg');
+  background-position: 0 0;
+  background-repeat: no-repeat;
+}
+.icon-coin-10-dims {
+  width: 32px;
+  height: 32px;
+}
+.icon-coin-3,
+.icon-coin-3\:regular {
+  background-image: url('icons.svg');
+  background-position: 0 -32px;
+  background-repeat: no-repeat;
+}
+.icon-coin-3-dims {
+  width: 32px;
+  height: 32px;
+}
+.icon-coin-4,
+.icon-coin-4\:regular {
+  background-image: url('icons.svg');
+  background-position: 0 -64px;
+  background-repeat: no-repeat;
+}
+.icon-coin-4-dims {
+  width: 32px;
+  height: 32px;
+}
+.icon-coin-7,
+.icon-coin-7\:regular {
+  background-image: url('icons.svg');
+  background-position: 0 -96px;
+  background-repeat: no-repeat;
+}
+.icon-coin-7-dims {
+  width: 32px;
+  height: 32px;
+}
+.icon-coin-8,
+.icon-coin-8\:regular {
+  background-image: url('icons.svg');
+  background-position: 0 -128px;
+  background-repeat: no-repeat;
+}
+.icon-coin-8-dims {
+  width: 32px;
+  height: 32px;
+}
+.icon-coin-9,
+.icon-coin-9\:regular {
+  background-image: url('icons.svg');
+  background-position: 0 -160px;
+  background-repeat: no-repeat;
+}
+.icon-coin-9-dims {
+  width: 32px;
+  height: 32px;
+}
+.icon-coins-1,
+.icon-coins-1\:regular {
+  background-image: url('icons.svg');
+  background-position: 0 -192px;
+  background-repeat: no-repeat;
+}
+.icon-coins-1-dims {
+  width: 32px;
+  height: 32px;
+}
+.icon-coins,
+.icon-coins\:regular {
+  background-image: url('icons.svg');
+  background-position: 0 -224px;
+  background-repeat: no-repeat;
+}
+.icon-coins-dims {
+  width: 32px;
+  height: 32px;
+}
+.icon-credit-card-1,
+.icon-credit-card-1\:regular {
+  background-image: url('icons.svg');
+  background-position: 0 -256px;
+  background-repeat: no-repeat;
+}
+.icon-credit-card-1-dims {
+  width: 32px;
+  height: 32px;
+}
+.icon-credit-card-2,
+.icon-credit-card-2\:regular {
+  background-image: url('icons.svg');
+  background-position: 0 -288px;
+  background-repeat: no-repeat;
+}
+.icon-credit-card-2-dims {
+  width: 32px;
+  height: 32px;
+}
+.icon-credit-card-3,
+.icon-credit-card-3\:regular {
+  background-image: url('icons.svg');
+  background-position: 0 -320px;
+  background-repeat: no-repeat;
+}
+.icon-credit-card-3-dims {
+  width: 32px;
+  height: 32px;
+}
+.icon-credit-card-4,
+.icon-credit-card-4\:regular {
+  background-image: url('icons.svg');
+  background-position: 0 -352px;
+  background-repeat: no-repeat;
+}
+.icon-credit-card-4-dims {
+  width: 32px;
+  height: 32px;
+}
+.icon-credit-card-5,
+.icon-credit-card-5\:regular {
+  background-image: url('icons.svg');
+  background-position: 0 -384px;
+  background-repeat: no-repeat;
+}
+.icon-credit-card-5-dims {
+  width: 32px;
+  height: 32px;
+}
+.icon-credit-card-6,
+.icon-credit-card-6\:regular {
+  background-image: url('icons.svg');
+  background-position: 0 -416px;
+  background-repeat: no-repeat;
+}
+.icon-credit-card-6-dims {
+  width: 32px;
+  height: 32px;
+}
+.icon-credit-card,
+.icon-credit-card\:regular {
+  background-image: url('icons.svg');
+  background-position: 0 -448px;
+  background-repeat: no-repeat;
+}
+.icon-credit-card-dims {
+  width: 32px;
+  height: 32px;
+}
+.icon-notes-1,
+.icon-notes-1\:regular {
+  background-image: url('icons.svg');
+  background-position: 0 -480px;
+  background-repeat: no-repeat;
+}
+.icon-notes-1-dims {
+  width: 32px;
+  height: 32px;
+}
+.icon-notes-2,
+.icon-notes-2\:regular {
+  background-image: url('icons.svg');
+  background-position: 0 -512px;
+  background-repeat: no-repeat;
+}
+.icon-notes-2-dims {
+  width: 32px;
+  height: 32px;
+}
+.icon-notes,
+.icon-notes\:regular {
+  background-image: url('icons.svg');
+  background-position: 0 -544px;
+  background-repeat: no-repeat;
+}
+.icon-notes-dims {
+  width: 32px;
+  height: 32px;
+}
+.icon-piggy-bank-1,
+.icon-piggy-bank-1\:regular {
+  background-image: url('icons.svg');
+  background-position: 0 -576px;
+  background-repeat: no-repeat;
+}
+.icon-piggy-bank-1-dims {
+  width: 32px;
+  height: 32px;
+}
+.icon-piggy-bank,
+.icon-piggy-bank\:regular {
+  background-image: url('icons.svg');
+  background-position: 0 -608px;
+  background-repeat: no-repeat;
+}
+.icon-piggy-bank-dims {
+  width: 32px;
+  height: 32px;
+}
+.icon-poor,
+.icon-poor\:regular {
+  background-image: url('icons.svg');
+  background-position: 0 -640px;
+  background-repeat: no-repeat;
+}
+.icon-poor-dims {
+  width: 32px;
+  height: 32px;
+}
+.icon-rich,
+.icon-rich\:regular {
+  background-image: url('icons.svg');
+  background-position: 0 -672px;
+  background-repeat: no-repeat;
+}
+.icon-rich-dims {
+  width: 32px;
+  height: 32px;
+}
+.icon-safebox-1,
+.icon-safebox-1\:regular {
+  background-image: url('icons.svg');
+  background-position: 0 -704px;
+  background-repeat: no-repeat;
+}
+.icon-safebox-1-dims {
+  width: 32px;
+  height: 32px;
+}
+.icon-safebox-2,
+.icon-safebox-2\:regular {
+  background-image: url('icons.svg');
+  background-position: 0 -736px;
+  background-repeat: no-repeat;
+}
+.icon-safebox-2-dims {
+  width: 32px;
+  height: 32px;
+}
+.icon-safebox-3,
+.icon-safebox-3\:regular {
+  background-image: url('icons.svg');
+  background-position: 0 -768px;
+  background-repeat: no-repeat;
+}
+.icon-safebox-3-dims {
+  width: 32px;
+  height: 32px;
+}
+.icon-safebox-4,
+.icon-safebox-4\:regular {
+  background-image: url('icons.svg');
+  background-position: 0 -800px;
+  background-repeat: no-repeat;
+}
+.icon-safebox-4-dims {
+  width: 32px;
+  height: 32px;
+}
+.icon-safebox,
+.icon-safebox\:regular {
+  background-image: url('icons.svg');
+  background-position: 0 -832px;
+  background-repeat: no-repeat;
+}
+.icon-safebox-dims {
+  width: 32px;
+  height: 32px;
+}
+.icon-strongbox,
+.icon-strongbox\:regular {
+  background-image: url('icons.svg');
+  background-position: 0 -864px;
+  background-repeat: no-repeat;
+}
+.icon-strongbox-dims {
+  width: 32px;
+  height: 32px;
+}
+.icon-wallet-1,
+.icon-wallet-1\:regular {
+  background-image: url('icons.svg');
+  background-position: 0 -896px;
+  background-repeat: no-repeat;
+}
+.icon-wallet-1-dims {
+  width: 32px;
+  height: 32px;
+}
+.icon-wallet-2,
+.icon-wallet-2\:regular {
+  background-image: url('icons.svg');
+  background-position: 0 -928px;
+  background-repeat: no-repeat;
+}
+.icon-wallet-2-dims {
+  width: 32px;
+  height: 32px;
+}
+.icon-wallet,
+.icon-wallet\:regular {
+  background-image: url('icons.svg');
+  background-position: 0 -960px;
+  background-repeat: no-repeat;
+}
+.icon-wallet-dims {
+  width: 32px;
+  height: 32px;
+}
+.icon-yen,
+.icon-yen\:regular {
+  background-image: url('icons.svg');
+  background-position: 0 -992px;
+  background-repeat: no-repeat;
+}
+.icon-yen-dims {
+  width: 32px;
+  height: 32px;
+}
