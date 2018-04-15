@@ -1,50 +1,68 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
-import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
-import Button from 'material-ui/Button';
+import Card, { CardActions, CardContent } from 'material-ui/Card';
 import Typography from 'material-ui/Typography';
+import IconButton from 'material-ui/IconButton';
+import BuildIcon from '@material-ui/icons/Build';
+import CloseIcon from '@material-ui/icons/Close';
 
 import CustomIcon from '../CustomIcon/CustomIcon';
-import icons from '../../assets/img/icons/lineal/icons.svg';
-// import icons from '../../assets/img/icons/fill/icons.css';
+import icons from '../../assets/img/icons/fill/sprite.svg';
 
-const styles = {
+const styles = theme => ({
   card: {
     maxWidth: 345,
-    margin: 16,
-    paddingTop: 10
+    margin: 16
+  },
+  cardActions: {
+    justifyContent: 'flex-end',
+    paddingTop: 0,
+    paddingBottom: 0
+  },
+  cardContent: {
+    display: 'flex',
+    alignItems: 'center'
+  },
+  button: {
+    margin: theme.spacing.unit
   },
   media: {
-    height: 200,
-    backgroundSize: 'contain'
+    display: 'inline-block',
+    width: '30%'
+  },
+  remainder: {
+    margin: 'auto'
   }
-};
+});
 
 function Account(props) {
   const { classes } = props;
   return (
     <div>
       <Card className={classes.card}>
-        <div className={classes.media}>
-          <CustomIcon icon="icon-rich" url={icons} />
-        </div>
-        <CardContent>
+        <CardActions className={classes.cardActions}>
+          <IconButton color="secondary" className={classes.button} aria-label="Edit">
+            <BuildIcon />
+          </IconButton>
+          <IconButton color="secondary" className={classes.button} aria-label="Delete">
+            <CloseIcon />
+          </IconButton>
+        </CardActions>
+        <div className={classes.cardTitle}>
           <Typography gutterBottom variant="headline" component="h2">
-            Cash
+            {props.title}
           </Typography>
-          <Typography variant="body2" component="p">
-            $1000
+        </div>
+        <CardContent className={classes.cardContent}>
+          <div className={classes.media}>
+            <CustomIcon icon={props.icon} url={icons} />
+          </div>
+          <Typography variant="body2" component="p" className={classes.remainder}>
+            {props.currency}
+            {props.amount}
           </Typography>
         </CardContent>
-        <CardActions>
-          <Button size="small" color="primary">
-            Change
-          </Button>
-          <Button size="small" color="primary">
-            Learn More
-          </Button>
-        </CardActions>
       </Card>
     </div>
   );
