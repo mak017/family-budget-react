@@ -6,7 +6,7 @@ import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
 
-import logo from '../../assets/img/logo.svg';
+import logo from '../../assets/img/fam-budget-logo.svg';
 
 const styles = {
   flex: {

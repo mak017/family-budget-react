@@ -25,6 +25,9 @@ const styles = theme => ({
     flexDirection: 'column',
     flexGrow: 1,
     width: '100%'
+  },
+  appBar: {
+    backgroundColor: theme.palette.primary.light
   }
 });
 
@@ -43,7 +46,7 @@ class MenuTabs extends React.Component {
 
     return (
       <div className={classes.root}>
-        <AppBar position="static" color="default">
+        <AppBar position="static" className={classes.appBar}>
           <Tabs value={value} onChange={this.handleChange} scrollable scrollButtons="off">
             <Tab label="Accounts" />
             <Tab label="Costs" />

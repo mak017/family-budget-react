@@ -14,6 +14,10 @@ const styles = theme => ({
     flexGrow: 1,
     paddingBottom: 16
   },
+  accountsWrap: {
+    display: 'flex',
+    flexWrap: 'wrap'
+  },
   button: {
     margin: theme.spacing.unit
   }
@@ -21,15 +25,38 @@ const styles = theme => ({
 
 class Accounts extends Component {
   state = {
-    modalOpen: true
+    accountList: {
+      cash: {
+        id: 1,
+        title: 'Cash',
+        amount: 1000,
+        currency: '$',
+        icon: 'rich'
+      },
+      cash2: {
+        id: 2,
+        title: 'Cash2',
+        amount: 1000000,
+        currency: '$',
+        icon: 'wallet'
+      }
+    },
+    dialogOpen: true
   };
 
-  handleModalOpen = () => {
-    this.setState({ modalOpen: true });
+  handleDialogOpen = () => {
+    this.setState({ dialogOpen: true });
   };
 
-  handleModalClose = () => {
-    this.setState({ modalOpen: false });
+  handleDialogClose = () => {
+    this.setState({ dialogOpen: false });
+  };
+
+  handleNewAccount = data => () => {
+    this.setState({
+      ...this.state.accountList,
+      data
+    });
   };
 
   render() {
@@ -40,21 +67,31 @@ class Accounts extends Component {
           <InnerToolbar title="Accounts">
             <Button
               variant="raised"
-              color="primary"
+              color="secondary"
               className={classes.button}
-              onClick={this.handleModalOpen}
+              onClick={this.handleDialogOpen}
             >
               Create account
             </Button>
           </InnerToolbar>
-          <Account title="Cash" amount={1000} currency="$" icon="rich" />
+          <div className={classes.accountsWrap}>
+            {Object.keys(this.state.accountList).map(acc => (
+              <Account
+                key={this.state.accountList[acc].id}
+                title={this.state.accountList[acc].title}
+                amount={this.state.accountList[acc].amount}
+                currency={this.state.accountList[acc].currency}
+                icon={this.state.accountList[acc].icon}
+              />
+            ))}
+          </div>
         </Paper>
         <DialogWrap
-          show={this.state.modalOpen}
-          closeModal={this.handleModalClose}
+          show={this.state.dialogOpen}
+          closeModal={this.handleDialogClose}
           modalTitle="Creating account"
         >
-          <CreateAccount />
+          <CreateAccount addData={this.handleNewAccount} />
         </DialogWrap>
       </React.Fragment>
     );

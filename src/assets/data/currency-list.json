@@ -8,15 +8,6 @@
     "code": "USD",
     "name_plural": "US dollars"
   },
-  "CAD": {
-    "symbol": "CA$",
-    "name": "Canadian Dollar",
-    "symbol_native": "$",
-    "decimal_digits": 2,
-    "rounding": 0,
-    "code": "CAD",
-    "name_plural": "Canadian dollars"
-  },
   "EUR": {
     "symbol": "€",
     "name": "Euro",
@@ -25,6 +16,42 @@
     "rounding": 0,
     "code": "EUR",
     "name_plural": "euros"
+  },
+  "RUB": {
+    "symbol": "RUB",
+    "name": "Russian Ruble",
+    "symbol_native": "руб.",
+    "decimal_digits": 2,
+    "rounding": 0,
+    "code": "RUB",
+    "name_plural": "Russian rubles"
+  },
+  "UAH": {
+    "symbol": "₴",
+    "name": "Ukrainian Hryvnia",
+    "symbol_native": "₴",
+    "decimal_digits": 2,
+    "rounding": 0,
+    "code": "UAH",
+    "name_plural": "Ukrainian hryvnias"
+  },
+  "BYR": {
+    "symbol": "BYR",
+    "name": "Belarusian Ruble",
+    "symbol_native": "BYR",
+    "decimal_digits": 0,
+    "rounding": 0,
+    "code": "BYR",
+    "name_plural": "Belarusian rubles"
+  },
+  "CAD": {
+    "symbol": "CA$",
+    "name": "Canadian Dollar",
+    "symbol_native": "$",
+    "decimal_digits": 2,
+    "rounding": 0,
+    "code": "CAD",
+    "name_plural": "Canadian dollars"
   },
   "AED": {
     "symbol": "AED",
@@ -169,15 +196,6 @@
     "rounding": 0,
     "code": "BWP",
     "name_plural": "Botswanan pulas"
-  },
-  "BYR": {
-    "symbol": "BYR",
-    "name": "Belarusian Ruble",
-    "symbol_native": "BYR",
-    "decimal_digits": 0,
-    "rounding": 0,
-    "code": "BYR",
-    "name_plural": "Belarusian rubles"
   },
   "BZD": {
     "symbol": "BZ$",
@@ -827,15 +845,6 @@
     "code": "RSD",
     "name_plural": "Serbian dinars"
   },
-  "RUB": {
-    "symbol": "RUB",
-    "name": "Russian Ruble",
-    "symbol_native": "руб.",
-    "decimal_digits": 2,
-    "rounding": 0,
-    "code": "RUB",
-    "name_plural": "Russian rubles"
-  },
   "RWF": {
     "symbol": "RWF",
     "name": "Rwandan Franc",
@@ -962,15 +971,6 @@
     "code": "TZS",
     "name_plural": "Tanzanian shillings"
   },
-  "UAH": {
-    "symbol": "₴",
-    "name": "Ukrainian Hryvnia",
-    "symbol_native": "₴",
-    "decimal_digits": 2,
-    "rounding": 0,
-    "code": "UAH",
-    "name_plural": "Ukrainian hryvnias"
-  },
   "UGX": {
     "symbol": "USh",
     "name": "Ugandan Shilling",
@@ -1060,5 +1060,32 @@
     "rounding": 0,
     "code": "ZMK",
     "name_plural": "Zambian kwachas"
+  },
+  "BTC": {
+    "symbol": "Ƀ",
+    "name": "Bitcoin",
+    "symbol_native": "Ƀ",
+    "decimal_digits": 10,
+    "rounding": 0,
+    "code": "BTC",
+    "name_plural": "Bitcoins"
+  },
+  "ETH": {
+    "symbol": "Ξ",
+    "name": "Ethereum",
+    "symbol_native": "Ξ",
+    "decimal_digits": 10,
+    "rounding": 0,
+    "code": "ETH",
+    "name_plural": "Ethereums"
+  },
+  "LTC": {
+    "symbol": "Ł",
+    "name": "Litecoin",
+    "symbol_native": "Ł",
+    "decimal_digits": 10,
+    "rounding": 0,
+    "code": "LTC",
+    "name_plural": "Litecoins"
   }
 }

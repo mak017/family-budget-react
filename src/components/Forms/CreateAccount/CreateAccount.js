@@ -31,38 +31,65 @@ const styles = theme => ({
 
 class CreateAccount extends Component {
   state = {
+    id: '',
+    title: '',
+    amount: '',
     currency: '',
-    name: 'hai'
+    icon: ''
   };
 
-  handleSelectChange = event => {
+  handleValueChange = event => {
     this.setState({ [event.target.name]: event.target.value });
+  };
+
+  handleIconChoose = id => () => {
+    this.setState({ icon: id });
+  };
+
+  handleSubmit = event => {
+    this.setState({ id: String(Date.now()) + Math.floor(Math.random() * 10000) });
+    this.props.addData(this.state);
+    console.log(this.state);
+    event.preventDefault();
   };
 
   render() {
     const { classes } = this.props;
-
     return (
-      <React.Fragment>
+      <form onSubmit={this.handleSubmit}>
         <FormControl className={`${classes.formControl} ${classes.formControlFullWidth}`}>
           <TextField
             autoFocus
             margin="dense"
             id="name"
+            name="title"
             label="Account name"
             type="text"
+            value={this.state.title}
+            required
+            onChange={this.handleValueChange}
             fullWidth
           />
         </FormControl>
-        <ChooseIcon />
+        <ChooseIcon chosenIcon={this.state.icon} chooseIcon={this.handleIconChoose} />
         <FormControl className={classes.formControl}>
-          <TextField margin="dense" id="name" label="Amount" type="text" fullWidth />
+          <TextField
+            margin="dense"
+            id="name"
+            name="amount"
+            label="Amount"
+            type="number"
+            value={this.state.amount}
+            onChange={this.handleValueChange}
+            fullWidth
+            required
+          />
         </FormControl>
         <FormControl className={classes.formControl}>
           <InputLabel htmlFor="currency">Currency</InputLabel>
           <Select
             value={this.state.currency}
-            onChange={this.handleSelectChange}
+            onChange={this.handleValueChange}
             inputProps={{
               name: 'currency',
               id: 'currency'
@@ -77,7 +104,7 @@ class CreateAccount extends Component {
             })}
           </Select>
         </FormControl>
-      </React.Fragment>
+      </form>
     );
   }
 }

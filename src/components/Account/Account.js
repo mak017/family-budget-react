@@ -39,7 +39,7 @@ const styles = theme => ({
 function Account(props) {
   const { classes } = props;
   return (
-    <div>
+    <React.Fragment>
       <Card className={classes.card}>
         <CardActions className={classes.cardActions}>
           <IconButton color="secondary" className={classes.button} aria-label="Edit">
@@ -64,7 +64,7 @@ function Account(props) {
           </Typography>
         </CardContent>
       </Card>
-    </div>
+    </React.Fragment>
   );
 }
 
