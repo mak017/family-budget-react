@@ -6,6 +6,7 @@ import { InputLabel } from 'material-ui/Input';
 import { FormControl } from 'material-ui/Form';
 import Select from 'material-ui/Select';
 import { MenuItem } from 'material-ui/Menu';
+import Button from 'material-ui/Button';
 
 import currencies from '../../../assets/data/currency-list.json';
 import ChooseIcon from '../ChooseIcon/ChooseIcon';
@@ -22,14 +23,18 @@ const styles = theme => ({
     minWidth: 120
   },
   formControlFullWidth: {
-    display: 'flex'
+    display: 'flex',
+    alignItems: 'center'
   },
   selectEmpty: {
     marginTop: theme.spacing.unit * 2
+  },
+  button: {
+    minWidth: 120
   }
 });
 
-class CreateAccount extends Component {
+class ManipulateAccount extends Component {
   state = {
     id: '',
     title: '',
@@ -37,6 +42,14 @@ class CreateAccount extends Component {
     currency: '',
     icon: ''
   };
+
+  // componentWillReceiveProps = nextProps => {
+  //   if (nextProps.editData) {
+  //     this.setState({
+  //       ...nextProps.editData
+  //     });
+  //   }
+  // };
 
   handleValueChange = event => {
     this.setState({ [event.target.name]: event.target.value });
@@ -47,14 +60,13 @@ class CreateAccount extends Component {
   };
 
   handleSubmit = event => {
-    this.setState({ id: String(Date.now()) + Math.floor(Math.random() * 10000) });
     this.props.addData(this.state);
-    console.log(this.state);
     event.preventDefault();
   };
 
   render() {
     const { classes } = this.props;
+
     return (
       <form onSubmit={this.handleSubmit}>
         <FormControl className={`${classes.formControl} ${classes.formControlFullWidth}`}>
@@ -97,20 +109,25 @@ class CreateAccount extends Component {
           >
             {currencyList.map(curr => {
               return (
-                <MenuItem key={curr.code} value={curr.code}>
+                <MenuItem key={curr.code} value={curr.symbol}>
                   {curr.name} ({curr.code})
                 </MenuItem>
               );
             })}
           </Select>
         </FormControl>
+        <FormControl className={`${classes.formControl} ${classes.formControlFullWidth}`}>
+          <Button variant="raised" color="secondary" className={classes.button} type="submit">
+            Create
+          </Button>
+        </FormControl>
       </form>
     );
   }
 }
 
-CreateAccount.propTypes = {
+ManipulateAccount.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(CreateAccount);
+export default withStyles(styles)(ManipulateAccount);

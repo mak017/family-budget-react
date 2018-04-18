@@ -7,7 +7,7 @@ import Button from 'material-ui/Button';
 import InnerToolbar from '../../components/InnerToolbar/InnerToolbar';
 import Account from '../../components/Account/Account';
 import DialogWrap from '../../components/DialogWrap/DialogWrap';
-import CreateAccount from '../../components/Forms/CreateAccount/CreateAccount';
+import ManipulateAccount from '../../components/Forms/ManipulateAccount/ManipulateAccount';
 
 const styles = theme => ({
   root: {
@@ -25,38 +25,56 @@ const styles = theme => ({
 
 class Accounts extends Component {
   state = {
-    accountList: {
-      cash: {
+    accountList: [
+      {
         id: 1,
         title: 'Cash',
         amount: 1000,
         currency: '$',
         icon: 'rich'
       },
-      cash2: {
+      {
         id: 2,
         title: 'Cash2',
         amount: 1000000,
-        currency: '$',
+        currency: '€',
         icon: 'wallet'
       }
-    },
-    dialogOpen: true
+    ],
+    dialogOpen: false,
+    editingAccountData: null
   };
 
-  handleDialogOpen = () => {
-    this.setState({ dialogOpen: true });
+  handleCreateAccDialogOpen = () => {
+    this.setState({ dialogOpen: true, editingAccountData: null });
   };
 
   handleDialogClose = () => {
     this.setState({ dialogOpen: false });
   };
 
-  handleNewAccount = data => () => {
+  handleNewAccount = data => {
+    const dataWithId = {
+      ...data,
+      id: String(Date.now()) + Math.floor(Math.random() * 10000)
+    };
     this.setState({
-      ...this.state.accountList,
-      data
+      ...this.state,
+      accountList: [...this.state.accountList, dataWithId],
+      dialogOpen: false
     });
+  };
+
+  handleDeleteAccount = id => () => {
+    this.setState({
+      ...this.state,
+      accountList: this.state.accountList.filter(acc => acc.id !== id)
+    });
+  };
+
+  handleEditAccount = id => () => {
+    const data = this.state.accountList.filter(acc => acc.id === id);
+    this.setState({ dialogOpen: true, editingAccountData: data });
   };
 
   render() {
@@ -69,19 +87,22 @@ class Accounts extends Component {
               variant="raised"
               color="secondary"
               className={classes.button}
-              onClick={this.handleDialogOpen}
+              onClick={this.handleCreateAccDialogOpen}
             >
               Create account
             </Button>
           </InnerToolbar>
           <div className={classes.accountsWrap}>
-            {Object.keys(this.state.accountList).map(acc => (
+            {this.state.accountList.map(acc => (
               <Account
-                key={this.state.accountList[acc].id}
-                title={this.state.accountList[acc].title}
-                amount={this.state.accountList[acc].amount}
-                currency={this.state.accountList[acc].currency}
-                icon={this.state.accountList[acc].icon}
+                key={acc.id}
+                id={acc.id}
+                title={acc.title}
+                amount={acc.amount}
+                currency={acc.currency}
+                icon={acc.icon}
+                onDelete={this.handleDeleteAccount(acc.id)}
+                onEdit={this.handleEditAccount(acc.id)}
               />
             ))}
           </div>
@@ -89,9 +110,12 @@ class Accounts extends Component {
         <DialogWrap
           show={this.state.dialogOpen}
           closeModal={this.handleDialogClose}
-          modalTitle="Creating account"
+          modalTitle={this.state.editingAccountData ? 'Edit account' : 'Creating account'}
         >
-          <CreateAccount addData={this.handleNewAccount} />
+          <ManipulateAccount
+            addData={this.handleNewAccount}
+            editData={this.state.editingAccountData}
+          />
         </DialogWrap>
       </React.Fragment>
     );

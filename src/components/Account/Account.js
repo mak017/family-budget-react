@@ -4,8 +4,8 @@ import { withStyles } from 'material-ui/styles';
 import Card, { CardActions, CardContent } from 'material-ui/Card';
 import Typography from 'material-ui/Typography';
 import IconButton from 'material-ui/IconButton';
-import BuildIcon from '@material-ui/icons/Build';
-import CloseIcon from '@material-ui/icons/Close';
+import SettingsIcon from '@material-ui/icons/Settings';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 import CustomIcon from '../CustomIcon/CustomIcon';
 import icons from '../../assets/img/icons/fill/sprite.svg';
@@ -42,11 +42,21 @@ function Account(props) {
     <React.Fragment>
       <Card className={classes.card}>
         <CardActions className={classes.cardActions}>
-          <IconButton color="secondary" className={classes.button} aria-label="Edit">
-            <BuildIcon />
+          <IconButton
+            color="secondary"
+            className={classes.button}
+            onClick={props.onEdit}
+            aria-label="Edit"
+          >
+            <SettingsIcon />
           </IconButton>
-          <IconButton color="secondary" className={classes.button} aria-label="Delete">
-            <CloseIcon />
+          <IconButton
+            color="secondary"
+            className={classes.button}
+            onClick={props.onDelete}
+            aria-label="Delete"
+          >
+            <DeleteIcon />
           </IconButton>
         </CardActions>
         <div className={classes.cardTitle}>
@@ -59,8 +69,9 @@ function Account(props) {
             <CustomIcon icon={props.icon} url={icons} />
           </div>
           <Typography variant="body2" component="p" className={classes.remainder}>
-            {props.currency}
-            {props.amount}
+            {props.currency !== '$'
+              ? `${props.amount} ${props.currency}`
+              : props.currency + props.amount}
           </Typography>
         </CardContent>
       </Card>
