@@ -6,6 +6,7 @@ import Tabs, { Tab } from 'material-ui/Tabs';
 import Typography from 'material-ui/Typography';
 
 import Accounts from '../Accounts/Accounts';
+import IncomeTab from '../IncomeTab/IncomeTab';
 
 function TabContainer(props) {
   return (
@@ -58,7 +59,11 @@ class MenuTabs extends React.Component {
             <Accounts />
           </TabContainer>
         )}
-        {value === 1 && <TabContainer>Income</TabContainer>}
+        {value === 1 && (
+          <TabContainer>
+            <IncomeTab />
+          </TabContainer>
+        )}
         {value === 2 && <TabContainer>Costs</TabContainer>}
       </div>
     );
