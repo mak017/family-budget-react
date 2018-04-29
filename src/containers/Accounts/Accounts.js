@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import Paper from 'material-ui/Paper';
 import Button from 'material-ui/Button';
+import uuid from 'uuid/v4';
 
 import InnerToolbar from '../../components/InnerToolbar/InnerToolbar';
 import Account from '../../components/Account/Account';
@@ -53,10 +54,10 @@ class Accounts extends Component {
     this.setState({ dialogOpen: false });
   };
 
-  handleNewAccount = data => {
+  handleNewAccount = submitted => {
     const dataWithId = {
-      ...data,
-      id: String(Date.now()) + Math.floor(Math.random() * 10000)
+      ...submitted.data,
+      id: uuid()
     };
     this.setState({
       ...this.state,
@@ -74,7 +75,20 @@ class Accounts extends Component {
 
   handleEditAccount = id => () => {
     const data = this.state.accountList.filter(acc => acc.id === id);
-    this.setState({ dialogOpen: true, editingAccountData: data });
+    const index = this.state.accountList.findIndex(acc => acc.id === id);
+    this.setState({
+      dialogOpen: true,
+      editingAccountData: { data: data[0], index }
+    });
+  };
+
+  handleEditSubmit = submitted => {
+    const accountList = [...this.state.accountList];
+    accountList[submitted.index] = submitted.data;
+    this.setState({
+      dialogOpen: false,
+      accountList
+    });
   };
 
   render() {
@@ -113,7 +127,7 @@ class Accounts extends Component {
           modalTitle={this.state.editingAccountData ? 'Edit account' : 'Creating account'}
         >
           <ManipulateAccount
-            addData={this.handleNewAccount}
+            addData={this.state.editingAccountData ? this.handleEditSubmit : this.handleNewAccount}
             editData={this.state.editingAccountData}
           />
         </DialogWrap>

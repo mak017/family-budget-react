@@ -36,27 +36,22 @@ const styles = theme => ({
 
 class ManipulateAccount extends Component {
   state = {
-    id: '',
-    title: '',
-    amount: '',
-    currency: '',
-    icon: ''
+    data: {
+      id: this.props.editData ? this.props.editData.data.id : '',
+      title: this.props.editData ? this.props.editData.data.title : '',
+      amount: this.props.editData ? this.props.editData.data.amount : '',
+      currency: this.props.editData ? this.props.editData.data.currency : '',
+      icon: this.props.editData ? this.props.editData.data.icon : ''
+    },
+    index: this.props.editData ? this.props.editData.index : null
   };
 
-  // componentWillReceiveProps = nextProps => {
-  //   if (nextProps.editData) {
-  //     this.setState({
-  //       ...nextProps.editData
-  //     });
-  //   }
-  // };
-
   handleValueChange = event => {
-    this.setState({ [event.target.name]: event.target.value });
+    this.setState({ data: { ...this.state.data, [event.target.name]: event.target.value } });
   };
 
   handleIconChoose = id => () => {
-    this.setState({ icon: id });
+    this.setState({ data: { ...this.state.data, icon: id } });
   };
 
   handleSubmit = event => {
@@ -77,13 +72,13 @@ class ManipulateAccount extends Component {
             name="title"
             label="Account name"
             type="text"
-            value={this.state.title}
+            value={this.state.data.title}
             required
             onChange={this.handleValueChange}
             fullWidth
           />
         </FormControl>
-        <ChooseIcon chosenIcon={this.state.icon} chooseIcon={this.handleIconChoose} />
+        <ChooseIcon chosenIcon={this.state.data.icon} chooseIcon={this.handleIconChoose} />
         <FormControl className={classes.formControl}>
           <TextField
             margin="dense"
@@ -91,7 +86,7 @@ class ManipulateAccount extends Component {
             name="amount"
             label="Amount"
             type="number"
-            value={this.state.amount}
+            value={this.state.data.amount}
             onChange={this.handleValueChange}
             fullWidth
             required
@@ -100,7 +95,7 @@ class ManipulateAccount extends Component {
         <FormControl className={classes.formControl}>
           <InputLabel htmlFor="currency">Currency</InputLabel>
           <Select
-            value={this.state.currency}
+            value={this.state.data.currency}
             onChange={this.handleValueChange}
             inputProps={{
               name: 'currency',
@@ -118,7 +113,7 @@ class ManipulateAccount extends Component {
         </FormControl>
         <FormControl className={`${classes.formControl} ${classes.formControlFullWidth}`}>
           <Button variant="raised" color="secondary" className={classes.button} type="submit">
-            Create
+            {this.props.editData ? 'Edit' : 'Create'}
           </Button>
         </FormControl>
       </form>
@@ -127,7 +122,9 @@ class ManipulateAccount extends Component {
 }
 
 ManipulateAccount.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  editData: PropTypes.object,
+  addData: PropTypes.func.isRequired
 };
 
 export default withStyles(styles)(ManipulateAccount);

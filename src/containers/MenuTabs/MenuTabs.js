@@ -49,8 +49,8 @@ class MenuTabs extends React.Component {
         <AppBar position="static" className={classes.appBar}>
           <Tabs value={value} onChange={this.handleChange} scrollable scrollButtons="off">
             <Tab label="Accounts" />
-            <Tab label="Costs" />
             <Tab label="Income" />
+            <Tab label="Costs" />
           </Tabs>
         </AppBar>
         {value === 0 && (
@@ -58,8 +58,8 @@ class MenuTabs extends React.Component {
             <Accounts />
           </TabContainer>
         )}
-        {value === 1 && <TabContainer>Costs</TabContainer>}
-        {value === 2 && <TabContainer>Income</TabContainer>}
+        {value === 1 && <TabContainer>Income</TabContainer>}
+        {value === 2 && <TabContainer>Costs</TabContainer>}
       </div>
     );
   }
