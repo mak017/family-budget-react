@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import CssBaseline from 'material-ui/CssBaseline';
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
+import { Route, Switch } from 'react-router-dom';
 
 import './App.css';
-import Header from './components/Header/Header';
-import MenuTabs from './containers/MenuTabs/MenuTabs';
+import Layout from './hoc/Layout/Layout';
+import Accounts from './containers/Accounts/Accounts';
+import Income from './containers/Income/Income';
 
 const theme = createMuiTheme({
   palette: {
@@ -28,9 +29,15 @@ class App extends Component {
     return (
       <div className="App">
         <MuiThemeProvider theme={theme}>
-          <CssBaseline />
-          <Header />
-          <MenuTabs />
+          {/* <Layout>{this.props.children}</Layout> */}
+          <Layout>
+            {this.props.children}
+            <Switch>
+              <Route path="/accounts" component={Accounts} />
+              <Route path="/income" component={Income} />
+              {/* <Route path="/" exact component={BurgerBuilder} /> */}
+            </Switch>
+          </Layout>
         </MuiThemeProvider>
       </div>
     );

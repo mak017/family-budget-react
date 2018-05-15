@@ -4,9 +4,10 @@ import { withStyles } from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
 import Tabs, { Tab } from 'material-ui/Tabs';
 import Typography from 'material-ui/Typography';
+import { NavLink, withRouter } from 'react-router-dom';
 
 import Accounts from '../Accounts/Accounts';
-import IncomeTab from '../IncomeTab/IncomeTab';
+import Income from '../Income/Income';
 
 function TabContainer(props) {
   return (
@@ -33,38 +34,47 @@ const styles = theme => ({
 });
 
 class MenuTabs extends React.Component {
-  state = {
-    value: 0
-  };
+  // state = {
+  //   value: 0
+  // };
 
-  handleChange = (event, value) => {
-    this.setState({ value });
+  // handleChange = (event, value) => {
+  //   this.setState({ value });
+  // };
+
+  handleCallToRouter = value => {
+    this.props.history.push(value);
   };
 
   render() {
     const { classes } = this.props;
-    const { value } = this.state;
+    // const { value } = this.state;
 
     return (
       <div className={classes.root}>
         <AppBar position="static" className={classes.appBar}>
-          <Tabs value={value} onChange={this.handleChange} scrollable scrollButtons="off">
-            <Tab label="Accounts" />
-            <Tab label="Income" />
-            <Tab label="Costs" />
+          <Tabs
+            value={this.props.history.location.pathname}
+            onChange={this.handleCallToRouter}
+            scrollable
+            scrollButtons="off"
+          >
+            <Tab value="/accounts" label="Accounts" component={NavLink} to="/accounts" />
+            <Tab value="/income" label="Income" component={NavLink} to="/income" />
+            <Tab value="/costs" label="Costs" />
           </Tabs>
         </AppBar>
-        {value === 0 && (
+        {this.props.history.location.pathname === '/accounts' && (
           <TabContainer>
             <Accounts />
           </TabContainer>
         )}
-        {value === 1 && (
+        {this.props.history.location.pathname === '/income' && (
           <TabContainer>
-            <IncomeTab />
+            <Income />
           </TabContainer>
         )}
-        {value === 2 && <TabContainer>Costs</TabContainer>}
+        {this.props.history.location.pathname === '/costs' && <TabContainer>Costs</TabContainer>}
       </div>
     );
   }
@@ -74,4 +84,4 @@ MenuTabs.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(MenuTabs);
+export default withRouter(withStyles(styles)(MenuTabs));

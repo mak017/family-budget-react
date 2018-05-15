@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import Paper from 'material-ui/Paper';
 import Button from 'material-ui/Button';
-import uuid from 'uuid/v4';
+import { connect } from 'react-redux';
 
 import InnerToolbar from '../../components/InnerToolbar/InnerToolbar';
 import Account from '../../components/Account/Account';
 import DialogWrap from '../../components/DialogWrap/DialogWrap';
 import ManipulateAccount from '../../components/Forms/ManipulateAccount/ManipulateAccount';
+import * as actions from '../../store/actions';
 
 const styles = theme => ({
   root: {
@@ -26,28 +27,13 @@ const styles = theme => ({
 
 class Accounts extends Component {
   state = {
-    accountList: [
-      {
-        id: 1,
-        title: 'Cash',
-        amount: 1000,
-        currency: '$',
-        icon: 'rich'
-      },
-      {
-        id: 2,
-        title: 'Cash2',
-        amount: 1000000,
-        currency: '€',
-        icon: 'wallet'
-      }
-    ],
     dialogOpen: false,
     editingAccountData: null
   };
 
   handleCreateAccDialogOpen = () => {
-    this.setState({ dialogOpen: true, editingAccountData: null });
+    this.setState({ dialogOpen: true });
+    this.props.onAddAccountInit();
   };
 
   handleDialogClose = () => {
@@ -55,40 +41,18 @@ class Accounts extends Component {
   };
 
   handleNewAccount = submitted => {
-    const dataWithId = {
-      ...submitted.data,
-      id: uuid()
-    };
-    this.setState({
-      ...this.state,
-      accountList: [...this.state.accountList, dataWithId],
-      dialogOpen: false
-    });
-  };
-
-  handleDeleteAccount = id => () => {
-    this.setState({
-      ...this.state,
-      accountList: this.state.accountList.filter(acc => acc.id !== id)
-    });
+    this.props.onAddAccountSubmit(submitted);
+    this.setState({ dialogOpen: false });
   };
 
   handleEditAccount = id => () => {
-    const data = this.state.accountList.filter(acc => acc.id === id);
-    const index = this.state.accountList.findIndex(acc => acc.id === id);
-    this.setState({
-      dialogOpen: true,
-      editingAccountData: { data: data[0], index }
-    });
+    this.props.onEditAccountInit(id);
+    this.setState({ dialogOpen: true });
   };
 
   handleEditSubmit = submitted => {
-    const accountList = [...this.state.accountList];
-    accountList[submitted.index] = submitted.data;
-    this.setState({
-      dialogOpen: false,
-      accountList
-    });
+    this.props.onEditSubmit(submitted);
+    this.setState({ dialogOpen: false });
   };
 
   render() {
@@ -107,7 +71,7 @@ class Accounts extends Component {
             </Button>
           </InnerToolbar>
           <div className={classes.accountsWrap}>
-            {this.state.accountList.map(acc => (
+            {this.props.accountList.map(acc => (
               <Account
                 key={acc.id}
                 id={acc.id}
@@ -115,7 +79,7 @@ class Accounts extends Component {
                 amount={acc.amount}
                 currency={acc.currency}
                 icon={acc.icon}
-                onDelete={this.handleDeleteAccount(acc.id)}
+                onDelete={this.props.onDeleteAccount(acc.id)}
                 onEdit={this.handleEditAccount(acc.id)}
               />
             ))}
@@ -124,11 +88,11 @@ class Accounts extends Component {
         <DialogWrap
           show={this.state.dialogOpen}
           closeModal={this.handleDialogClose}
-          modalTitle={this.state.editingAccountData ? 'Edit account' : 'Creating account'}
+          modalTitle={this.props.editingAccountData ? 'Edit account' : 'Creating account'}
         >
           <ManipulateAccount
-            addData={this.state.editingAccountData ? this.handleEditSubmit : this.handleNewAccount}
-            editData={this.state.editingAccountData}
+            addData={this.props.editingAccountData ? this.handleEditSubmit : this.handleNewAccount}
+            editData={this.props.editingAccountData}
           />
         </DialogWrap>
       </React.Fragment>
@@ -140,4 +104,21 @@ Accounts.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(Accounts);
+const mapStateToProps = state => {
+  return {
+    accountList: state.accountList,
+    editingAccountData: state.editingAccountData
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onAddAccountInit: () => dispatch(actions.addAccountInit()),
+    onDeleteAccount: id => () => dispatch(actions.deleteAccount(id)),
+    onEditAccountInit: id => dispatch(actions.editAccountInit(id)),
+    onEditSubmit: submitted => dispatch(actions.editAccountSubmit(submitted)),
+    onAddAccountSubmit: submitted => dispatch(actions.addAccountSubmit(submitted))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Accounts));
