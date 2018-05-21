@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
-import Paper from 'material-ui/Paper';
-import Button from 'material-ui/Button';
+import { withStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
 import { connect } from 'react-redux';
 
 import InnerToolbar from '../../components/InnerToolbar/InnerToolbar';
@@ -101,7 +101,14 @@ class Accounts extends Component {
 }
 
 Accounts.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  onAddAccountInit: PropTypes.func.isRequired,
+  onAddAccountSubmit: PropTypes.func.isRequired,
+  onEditAccountInit: PropTypes.func.isRequired,
+  onEditSubmit: PropTypes.func.isRequired,
+  onDeleteAccount: PropTypes.func.isRequired,
+  accountList: PropTypes.array.isRequired,
+  editingAccountData: PropTypes.any
 };
 
 const mapStateToProps = state => {

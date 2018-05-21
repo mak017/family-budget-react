@@ -1,25 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
-import AppBar from 'material-ui/AppBar';
-import Tabs, { Tab } from 'material-ui/Tabs';
-import Typography from 'material-ui/Typography';
+import { withStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
 import { NavLink, withRouter } from 'react-router-dom';
 
 import Accounts from '../Accounts/Accounts';
 import Income from '../Income/Income';
-
-function TabContainer(props) {
-  return (
-    <Typography component="div" style={{ padding: 8 * 3, flexGrow: 1, display: 'flex' }}>
-      {props.children}
-    </Typography>
-  );
-}
-
-TabContainer.propTypes = {
-  children: PropTypes.node.isRequired
-};
+import TabContainer from './TabContainer/TabContainer';
 
 const styles = theme => ({
   root: {
@@ -81,7 +70,8 @@ class MenuTabs extends React.Component {
 }
 
 MenuTabs.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired
 };
 
 export default withRouter(withStyles(styles)(MenuTabs));

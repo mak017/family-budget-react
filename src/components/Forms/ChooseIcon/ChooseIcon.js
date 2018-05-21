@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
-import List, { ListItem, ListItemIcon } from 'material-ui/List';
+import { withStyles } from '@material-ui/core/styles';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
 
 import CustomIcon from '../../CustomIcon/CustomIcon';
 import icons from '../../../assets/img/icons/fill/sprite.svg';
@@ -52,7 +54,9 @@ function InsetList(props) {
 }
 
 InsetList.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  chosenIcon: PropTypes.string.isRequired,
+  chooseIcon: PropTypes.func.isRequired
 };
 
 export default withStyles(styles)(InsetList);

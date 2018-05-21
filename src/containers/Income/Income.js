@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import Paper from 'material-ui/Paper';
 import Button from 'material-ui/Button';
-import uuid from 'uuid/v4';
+// import uuid from 'uuid/v4';
 
 import InnerToolbar from '../../components/InnerToolbar/InnerToolbar';
-import Account from '../../components/Account/Account';
-import DialogWrap from '../../components/DialogWrap/DialogWrap';
-import ManipulateAccount from '../../components/Forms/ManipulateAccount/ManipulateAccount';
+// import Account from '../../components/Account/Account';
+// import DialogWrap from '../../components/DialogWrap/DialogWrap';
+// import ManipulateAccount from '../../components/Forms/ManipulateAccount/ManipulateAccount';
+import IncomeTable from '../../components/Tables/IncomeTable/IncomeTable';
 
 const styles = theme => ({
   root: {
@@ -64,18 +65,7 @@ class IncomeTab extends Component {
             </Button>
           </InnerToolbar>
           <div className={classes.IncomeTabWrap}>
-            {/* {this.state.accountList.map(acc => (
-              <Account
-                key={acc.id}
-                id={acc.id}
-                title={acc.title}
-                amount={acc.amount}
-                currency={acc.currency}
-                icon={acc.icon}
-                onDelete={this.handleDeleteAccount(acc.id)}
-                onEdit={this.handleEditAccount(acc.id)}
-              />
-            ))} */}
+            <IncomeTable />
           </div>
         </Paper>
         {/* <DialogWrap

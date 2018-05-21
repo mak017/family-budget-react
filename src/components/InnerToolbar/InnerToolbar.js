@@ -32,7 +32,9 @@ function ButtonAppBar(props) {
 }
 
 ButtonAppBar.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  title: PropTypes.string.isRequired,
+  children: PropTypes.any
 };
 
 export default withStyles(styles)(ButtonAppBar);
